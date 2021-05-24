@@ -1,0 +1,1 @@
+Update script.js at some point to not store json object, the code editor can act as the storage
