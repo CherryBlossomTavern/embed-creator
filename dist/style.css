@@ -33,13 +33,62 @@
   font-weight: 400;
   font-family: 'Manrope-ExtraLight';
 }
-:root {
+html.dark {
   --text: rgba(255, 255, 255, 0.9);
   --background: rgb(24, 18, 23);
+  --nav: rgb(24, 18, 23);
+  --embmaker: rgba(255, 255, 255, 0.1);
+  --textareabg: rgba(0,0,0,0.2);
+  --textareatext: rgba(255, 255, 255, 0.6);
+  --counter: rgba(255, 255, 255, 0.6);
+  --embed: rgba(0,0,0,0.1);
   --accent: #ffedad;
+  --buttonborder: rgba(255, 255, 255, 0.2);
+  --buttontext: rgba(255, 255, 255, 0.7);
+  --outputbg: rgba(255, 255, 255, 0.05);
   --minWidth: 40px;
   --maxWidth: 620px;
 }
+html.light {
+  --text: rgba(0, 0, 0, 0.9);
+  --background: #fff;
+  --nav: #d8dadd;
+  --embmaker: rgba(0, 0, 0, 0);
+  --textareabg: #e3e5e8;
+  --textareatext: rgba(0, 0, 0, 0.9);
+  --counter: rgba(0, 0, 0, 0.9);
+  --embed: #f2f3f5;
+  --accent: #ffedad;
+  --buttonborder: rgba(0, 0, 0, 0.2);
+  --buttontext: rgba(0, 0, 0, 0.7);
+  --outputbg: #f2f3f5;
+  --minWidth: 40px;
+  --maxWidth: 620px;
+}
+#colorIcon {
+  margin-top: 7px;
+}
+#colorIcon svg {
+  color: fill(--text);
+  transition: transform 0.2s ease;
+}
+#colorIcon svg:hover {
+  transform: rotate(20deg) scale(1.2);
+  transition: transform 0.2s ease;
+
+}
+select {
+  border: none;
+  padding: 4px 10px 4px 10px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: var(--text);
+}
+option {
+  background: rgba(255, 255, 255, 0.15)!important;
+  color: var(--text)!important;
+}
+
 *, *::before, *::after  {
   margin: 0;
   padding: 0;
@@ -65,14 +114,50 @@ html {
   min-width: 40px;
 } */
 
+nav {
+  position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999999;
+    backdrop-filter: blur(6px);
+}
+nav div {
+  position: relative;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  width: 100%;
+  height: 3rem;
+}
+nav div::before {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: var(--nav);
+  opacity: 0.5;
+  left: 0;
+  top: 0;
+}
+nav div * {
+  position: relative;
+}
+
+nav div *:first-child {
+  margin-right: auto;
+  text-decoration: none;
+}
+
 body {
   font-family: 'Manrope', sans-serif;
   background-color: var(--background);
   color: var(--text);
   height: 100%;
-  padding: 20px;
 }
 div.container {
+  padding: 20px;
   /* background-color: red; */
   width: 100%;
   height: 100%;
@@ -84,7 +169,7 @@ div.container {
   gap: 20px;
 }
 div.embedmaker {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--embmaker);
   width: 50%;
   min-height: calc(100vh - 40px);
   padding: 10px;
@@ -116,6 +201,7 @@ p.bot {
   border-radius: 3px;
   margin-bottom: 17px;
   margin-left: 8px;
+  color: white;
 }
 div.userContent {
   position: relative;
@@ -127,21 +213,21 @@ div.userContent {
   max-width: var(--maxWidth);
 }
 textarea {
-  background-color: rgba(0,0,0,0.2);
+  background-color: var(--textareabg);
   border: none;
   border-radius: 5px;
   outline: none;
   padding: 5px;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--textareatext);
   font-size: 0.85rem;
 }
 input {
-  background-color: rgba(0,0,0,0.2);
+  background-color: var(--textareabg);
   border: none;
   border-radius: 5px;
   outline: none;
   padding: 12px;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--textareatext);
   font-size: 0.85rem;
   height: 50px;
   max-width: 250px;
@@ -156,13 +242,13 @@ p.counter {
   max-width: 100%;
   text-align: right;
   font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--counter);
 }
 p.near {
   color: rgba(255, 0, 0, 0.6);
 }
 div.embed {
-  background-color: rgba(0,0,0,0.1);
+  background-color: var(--embed);
   min-width: 100%;
   max-width: 100%;
   display: flex;
@@ -185,7 +271,7 @@ div.content {
   flex-wrap: nowrap;
 }
 div.outputcode {
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: var(--outputbg);
   width: 50%;
   min-height: calc(100vh - 40px);
   padding: 10px;
@@ -226,8 +312,8 @@ button#copy {
   background-color: transparent;
   fill: none;
   cursor: pointer;
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  color: rgba(255, 255, 255, 0.7);
+  border: 2px solid var(--buttonborder);
+  color: var(--buttontext);
   border-radius: 5px;
   padding: 5px;
   font-size: 0.8rem;
@@ -246,8 +332,8 @@ button#addField {
   height: 45px;
   font-size: 0.85rem;
   font-family: 'Manrope', sans-serif;
-  background: rgba(0, 0, 0, 0.15);
-  color: rgba(255, 255, 255, 0.6);
+  background: var(--textareabg);
+  color: var(--textareatext);
   border: none;
   fill: none;
   cursor: pointer;
@@ -283,8 +369,8 @@ button.delete {
   background-color: transparent;
   fill: none;
   cursor: pointer;
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  color: rgba(255, 255, 255, 0.7);
+  border: 2px solid var(--buttonborder);
+  color: var(--buttontext);
   border-radius: 5px;
   padding: 5px;
   font-size: 0.8rem;
