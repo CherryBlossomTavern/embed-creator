@@ -1,0 +1,23 @@
+name: Gather Dependencies, Lint & Attempt Build
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: Gather Dependencies, Lint & Attempt Build
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Install Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Dependencies
+        run: npm install
+
+      - name: ESLint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build

@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "declaration": false,
+    "baseUrl": ".",
+    "sourceMap": true,
+    "lib": ["DOM", "ES2020", "WebWorker", "WebWorker.ImportScripts"],
+    "allowSyntheticDefaultImports": true,
+    "strictFunctionTypes": false,
+    "skipLibCheck": true,
+    "jsx": "react",
+    "downlevelIteration": true,
+  },
+  "include": [
+    "src/index.tsx", 
+    "src/shims.d.ts"
+  ]
+}
